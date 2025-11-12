@@ -69,14 +69,23 @@ O **AI Ambient Music Generator** combina múltiplas APIs de IA generativa para c
            └────────┘  └────────┘  └────────┘
 ```
 
-## Pré-requisitos
+## 🚀 Início Rápido
 
-- **Docker** e **Docker Compose** 20.10+
-- **Git**
+### Para Desenvolvedores
+📖 **[Quick Start Guide](docs/QUICK_START.md)** - Guia completo de setup e implementação (30 minutos)
+
+### Para Stakeholders
+📋 **[Executive Summary](docs/EXECUTIVE_SUMMARY.md)** - Visão executiva do projeto
+
+### Pré-requisitos
+
+- **Docker** 24.x e **Docker Compose** 2.x
+- **FFmpeg** 6.0+
+- **50+ GB** de espaço em disco
 - **Chaves de API**:
-  - OpenAI API Key (para DALL·E 3)
-  - Mubert API Key (para geração de música)
-  - YouTube API Credentials (opcional, para upload)
+  - Mubert API Key (Trial $49/mês ou Startup $199/mês)
+  - OpenAI API Key (DALL·E 3)
+  - YouTube OAuth Credentials (⚠️ requer verificação Google 2-4 semanas)
 
 ## Instalação Rápida
 
