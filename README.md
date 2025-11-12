@@ -2,10 +2,10 @@
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
-[![Next.js](https://img.shields.io/badge/Next.js-15-black.svg)](https://nextjs.org/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-green.svg)](https://fastapi.tiangolo.com/)
+[![Next.js](https://img.shields.io/badge/Next.js-16.0.1-black.svg)](https://nextjs.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-Latest-green.svg)](https://fastapi.tiangolo.com/)
 
-Uma plataforma web completa para criar, visualizar e gerenciar músicas ambiente geradas por Inteligência Artificial. Automatize a criação de faixas para relaxamento, meditação e concentração, com renderização de vídeo e upload direto para o YouTube.
+Uma aplicação web **single-user** para criar e gerenciar músicas ambiente geradas por IA, com renderização de vídeo e upload automatizado para YouTube. Sistema completo de produção de conteúdo musical para monetização no YouTube.
 
 ## Visão Geral
 
@@ -18,14 +18,15 @@ O **AI Ambient Music Generator** combina múltiplas APIs de IA generativa para c
 
 ### Principais Features
 
-- Sistema multi-user com autenticação JWT
-- Geração de música ambiente via prompt textual
-- Criação automática de capas artísticas com IA
-- Renderização de vídeos Full HD (1080p) com fade-in/fade-out
-- Histórico completo de faixas geradas
-- Sistema de quotas diárias por usuário
-- Upload direto para YouTube
-- Interface minimalista e responsiva (shadcn/ui)
+- **Sistema single-user** com autenticação JWT
+- Geração de música ambiente via prompt textual (Mubert API 3.0)
+- Criação automática de capas artísticas com IA (DALL·E 3)
+- Renderização de vídeos Full HD (1080p) com fade-in/fade-out (FFmpeg)
+- Histórico completo de faixas geradas com filtros
+- Dashboard com estatísticas de uso e storage
+- **Geração em lote** (até 10 tracks por vez)
+- Upload direto para YouTube com OAuth 2.0
+- Interface minimalista dark theme (shadcn/ui + TailwindCSS)
 
 ## Stack Tecnológica
 
@@ -38,18 +39,19 @@ O **AI Ambient Music Generator** combina múltiplas APIs de IA generativa para c
 - **Processamento**: FFmpeg para renderização de vídeo
 
 ### Frontend
-- **Framework**: Next.js 15 (App Router)
-- **UI**: shadcn/ui + TailwindCSS
+- **Framework**: Next.js 16.0.1 (App Router)
+- **Runtime**: Node.js 20 LTS
+- **Language**: TypeScript 5.x
+- **UI**: shadcn/ui + TailwindCSS 3.x
 - **Animações**: Framer Motion
-- **State Management**: React Context API
-- **HTTP Client**: Axios
+- **HTTP Client**: Axios com interceptors (auto token refresh)
 
 ### Infraestrutura
-- **Containerização**: Docker + Docker Compose
-- **Reverse Proxy**: Nginx
-- **Banco de Dados**: PostgreSQL em Docker
-- **Deploy**: AWS EC2 + Docker
-- **SSL**: Let's Encrypt (Certbot)
+- **Containerização**: Docker 24.x + Docker Compose 2.x
+- **Banco de Dados**: PostgreSQL 15
+- **Storage**: Flat file system (UUID-based)
+- **Deploy**: Local (desenvolvimento) → AWS EC2 (produção futura)
+- **SSL**: Let's Encrypt via Nginx (produção)
 
 ## Arquitetura
 
@@ -310,9 +312,29 @@ Sistema robusto de tratamento de erros com:
 
 ## Documentação
 
-- [Product Requirements Document (PRD)](docs/product-requirements-document.md)
-- [API Documentation](docs/api-documentation.md) (em breve)
-- [Setup Guide](docs/setup-guide.md) (em breve)
+### 📐 Arquitetura
+- **[System Architecture](docs/architecture/system-architecture.md)** - Documentação técnica completa (~150 páginas)
+  - Diagramas de componentes, fluxos e dados
+  - Stack tecnológico detalhado
+  - Modelagem de dados (ERD)
+  - API Architecture (REST endpoints)
+  - Security architecture
+  - Decisões arquiteturais (ADRs)
+  - Roadmap de implementação (5 fases)
+
+- **[Project Structure](docs/architecture/project-structure.md)** - Estrutura de diretórios e convenções
+- **[Architecture README](docs/architecture/README.md)** - Visão geral e quick reference
+
+### 📋 Produto
+- **[Product Requirements Document (PRD)](specs/product/prd.md)** - Requisitos de produto
+- **[Phase 1: Music + Image Generation](.claude/sessions/main-features/issues/fase-1-geracao-musica-imagem.md)**
+- **[Phase 2: Video Rendering](.claude/sessions/main-features/issues/fase-2-renderizacao-video.md)**
+- **[Phase 3: Dashboard + History](.claude/sessions/main-features/issues/fase-3-dashboard-historico.md)**
+- **[Phase 4: YouTube Upload](.claude/sessions/main-features/issues/fase-4-upload-youtube.md)**
+- **[Phase 5: Batch Generation](.claude/sessions/main-features/issues/fase-5-geracao-em-lote.md)**
+
+### 🚀 Início Rápido
+Para documentação completa de setup, consulte [System Architecture - Deployment](docs/architecture/system-architecture.md#9-deployment-architecture).
 
 ## Contribuindo
 
